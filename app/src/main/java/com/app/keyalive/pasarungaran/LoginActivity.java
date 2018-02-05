@@ -56,8 +56,16 @@ public class LoginActivity extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ProgressDialog loading = ProgressDialog.show(mContext, null, "Harap Tunggu", true, false);
-                requestLoading();
+                if(username.getText().toString().length()==0){
+                    //jika form Email belum di isi / masih kosong
+                    username.setError("Username diperlukan!");
+                }else if(password.getText().toString().length()==0) {
+                    //jika form Passwrod belum di isi / masih kosong
+                    password.setError("Password diperlukan!");
+                } else {
+                    loading = ProgressDialog.show(mContext, null, "Harap Tunggu...", true, false);
+                    requestLoading();
+                }
             }
         });
         register.setOnClickListener(new View.OnClickListener() {
@@ -78,7 +86,7 @@ public class LoginActivity extends AppCompatActivity {
                         @Override
                         public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                             if (response.isSuccessful()){
-//                                loading.dismiss();
+                              loading.dismiss();
                                 try {
                                     JSONObject jsonRESULTS = new JSONObject(response.body().string());
                                     if (jsonRESULTS.getString("error").equals("false")){
@@ -89,6 +97,7 @@ public class LoginActivity extends AppCompatActivity {
                                         Intent intent = new Intent(mContext, MainActivity.class);
                                         intent.putExtra("result_nama", nama);
                                         startActivity(intent);
+                                        finish();
                                     } else {
                                         // Jika login gagal
                                         String error_message = jsonRESULTS.getString("error_msg");
@@ -113,7 +122,8 @@ public class LoginActivity extends AppCompatActivity {
 
         }
 
-
-
-
+    @Override
+    public void onBackPressed() {
+        finish();
+    }
 }

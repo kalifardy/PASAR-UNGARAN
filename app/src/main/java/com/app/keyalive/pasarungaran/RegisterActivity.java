@@ -43,7 +43,6 @@ public class RegisterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register);
         mContext = this;
         mApiService = UtilsApi.getAPIService();
-//        initComponents();
         til2 = findViewById(R.id.til2);
         edtUsername = findViewById(R.id.edt_username);
         edtEmail = findViewById(R.id.edt_email);
@@ -54,8 +53,19 @@ public class RegisterActivity extends AppCompatActivity {
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                requestRegister();
+                if(edtUsername.getText().toString().length()==0){
+                    //jika form Email belum di isi / masih kosong
+                    edtUsername.setError("Username diperlukan!");
+                }else if(edtEmail.getText().toString().length()==0){
+                    //jika form Username belum di isi / masih kosong
+                    edtEmail.setError("Email diperlukan!");
+                }else if(edtPassword.getText().toString().length()==0) {
+                    //jika form Passwrod belum di isi / masih kosong
+                    edtPassword.setError("Password diperlukan!");
+                } else {
+                    loading = ProgressDialog.show(mContext, null, "Harap Tunggu...", true, false);
+                    requestRegister();
+                }
             }
         });
     }
@@ -104,8 +114,6 @@ public class RegisterActivity extends AppCompatActivity {
                 });
     }
 
-    private void initComponents() {
-    }
 
 
 }
