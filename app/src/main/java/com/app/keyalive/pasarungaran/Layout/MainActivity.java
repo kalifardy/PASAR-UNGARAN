@@ -1,10 +1,12 @@
-package com.app.keyalive.pasarungaran;
+package com.app.keyalive.pasarungaran.Layout;
 
+import android.app.FragmentManager;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -15,6 +17,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.app.keyalive.pasarungaran.DataFragment;
+import com.app.keyalive.pasarungaran.HomeFragment;
+import com.app.keyalive.pasarungaran.R;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -44,22 +50,22 @@ public class MainActivity extends AppCompatActivity
 
         drawerLayout = findViewById(R.id.drawer_layout);
         toolbar = findViewById(R.id.toolbar);
-        tvResultNama = findViewById(R.id.tvResultNama);
+//        tvResultNama = findViewById(R.id.tvResultNama);
         navView = findViewById(R.id.nav_view);
 
-        initComponents();
+//        initComponents();
 
         // untuk mendapatkan data dari activity sebelumnya, yaitu activity login.
-        Bundle extras = getIntent().getExtras();
-        if (extras != null)
-            resultNama = extras.getString("result_nama");
-        tvResultNama.setText(resultNama);
+//        Bundle extras = getIntent().getExtras();
+//        if (extras != null)
+//            resultNama = extras.getString("result_nama");
+//        tvResultNama.setText(resultNama);
     }
 
 
-    private void initComponents() {
-        tvResultNama = (TextView) findViewById(R.id.tvResultNama);
-    }
+//    private void initComponents() {
+//        tvResultNama = (TextView) findViewById(R.id.tvResultNama);
+//    }
 
     boolean doubleBackToExitP=false;
     @Override
@@ -116,11 +122,15 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+        if (id == R.id.home) {
+            getSupportFragmentManager().beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN).replace(R.id.layout_fragement,new HomeFragment()).commit();
+//             Handle the camera action
+        } else if (id == R.id.data) {
+            getSupportFragmentManager().beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN).replace(R.id.layout_fragement,new DataFragment()).commit();
 
-        } else if (id == R.id.nav_slideshow) {
+        } else if (id == R.id.pembayaran) {
+
+        } else if (id == R.id.edit_pembayaran) {
 
         } else if (id == R.id.nav_dataSetoran) {
 

@@ -4,6 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.app.keyalive.pasarungaran.Layout.SplashScreen">
+    tools:context="com.app.keyalive.pasarungaran.Data.TambahAnggota">
 
 </android.support.constraint.ConstraintLayout>

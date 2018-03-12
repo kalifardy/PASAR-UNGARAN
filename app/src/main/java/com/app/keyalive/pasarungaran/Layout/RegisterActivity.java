@@ -1,4 +1,4 @@
-package com.app.keyalive.pasarungaran;
+package com.app.keyalive.pasarungaran.Layout;
 
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.app.keyalive.pasarungaran.R;
 import com.app.keyalive.pasarungaran.apihelper.ApiService;
 import com.app.keyalive.pasarungaran.apihelper.UtilsApi;
 

@@ -1,13 +1,15 @@
-package com.app.keyalive.pasarungaran;
+package com.app.keyalive.pasarungaran.Data;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class SplashScreen extends AppCompatActivity {
+import com.app.keyalive.pasarungaran.R;
+
+public class EditPedagang extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_splash_screen);
+        setContentView(R.layout.activity_edit_pedagang);
     }
 }
